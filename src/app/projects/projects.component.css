@@ -1,0 +1,14 @@
+.project-tile {
+  background-color: pink;
+}
+/*  selct all <p> immediatley following .project-tile */
+.project-tile>p.title {
+  color: red;
+}
+
+.project-tile:hover>p.title {
+  color: black;
+}
+.project-tile:hover {
+  background-color: black;
+}

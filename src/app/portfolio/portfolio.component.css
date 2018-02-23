@@ -1,0 +1,13 @@
+.test-tile {
+  background-color: rgb(191, 133, 55);
+}
+
+
+
+.tile-background-img:hover {
+  color: rgb(255, 255, 255);
+}
+
+.preview {
+  background-color: #109cb8;
+}
