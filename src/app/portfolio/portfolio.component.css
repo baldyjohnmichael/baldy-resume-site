@@ -9,5 +9,32 @@
 }
 
 .preview {
-  background-color: #109cb8;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-position: center;
+  background-size: 50%;
 }
+
+img.resize {
+  width=: 50%;
+  height: 50%;
+}
+/* .topsoil {
+    background-image: url("imgs/cirdles/topsoil.png");
+}
+
+.ambapo {
+  background-image: url("imgs/cirdles/ambapo.png");
+}
+
+.chroni {
+  background-image: url("imgs/cirdles/chroni.png");
+}
+
+.mars {
+  background-image: url("imgs/cirdles/mars.png");
+}
+
+.squid {
+  background-image: url("imgs/cirdles/squid.png");
+} */
