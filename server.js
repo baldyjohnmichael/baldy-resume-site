@@ -9,25 +9,43 @@ const api = require('./server/routes/api');
 
 const app = express();
 
+// If an incoming request uses
+// a protocol other than HTTPS,
+// redirect that request to the
+// same url but with HTTPS
+const forceSSL = function() {
+  return function (req, res, next) {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+      return res.redirect(
+       ['https://', req.get('Host'), req.url].join('')
+      );
+    }
+    next();
+  }
+}
+// Instruct the app
+// to use the forceSSL
+// middleware
+app.use(forceSSL());
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Point static path to dist
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, '/dist')));
 
 // Set our api routes
 app.use('/api', api);
 
 // Catch all other routes and return the index file
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'src/index.html'));
+app.get('/*', function(req, res) => {
+  res.sendFile(path.join(__dirname, '/dist/index.html'));
 });
 
 /**
  * Get port from environment and store in Express.
  */
-const port = process.env.PORT || '3000';
+const port = process.env.PORT || '8080';
 app.set('port', port);
 
 /**
